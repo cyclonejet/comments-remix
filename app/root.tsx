@@ -42,7 +42,7 @@ export default function App() {
         <Links />
       </head>
       <body className='p-10 font-serif'>
-        <h3 className='text-5xl mb-10'>Comments</h3>
+        <h3 className='lg:text-5xl text-3xl lg:mb-10 mb-4'>Comments</h3>
         <div className='flex flex-col gap-5'>
           {comments.map((comment) => (
             <Comment key={comment.username} comment={comment} />

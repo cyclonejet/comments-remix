@@ -2,13 +2,13 @@ import type { Comment } from '../root';
 
 export default function Comment({ comment }: { comment: Comment }) {
   return (
-    <div className='flex p-3 border-black border-2 rounded'>
+    <div className='flex lg:p-3 p-2 border-black border-2 rounded'>
       <div className='mr-5'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='icon icon-tabler icon-tabler-user'
-          width='80'
-          height='80'
+          className='icon icon-tabler icon-tabler-user lg:h-20 lg:w-20 h-14 w-14'
+          width='100%'
+          height='100%'
           viewBox='0 0 24 24'
           strokeWidth='2'
           stroke='currentColor'

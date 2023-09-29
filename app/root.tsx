@@ -5,13 +5,14 @@ import {
   type LinksFunction,
 } from '@remix-run/node';
 import {
+  Form,
   Links,
   LiveReload,
   Meta,
   Scripts,
   ScrollRestoration,
-  useFetcher,
   useLoaderData,
+  useNavigation,
 } from '@remix-run/react';
 
 import Comment from './components/Comment';
@@ -62,15 +63,19 @@ export const loader = async () => {
 };
 
 export default function App() {
-  const fetcher = useFetcher();
+  const navigation = useNavigation();
 
   const formRef = useRef<HTMLFormElement>(null);
 
   const { comments } = useLoaderData<typeof loader>();
 
+  const isAdding = navigation.state === 'submitting';
+
   useEffect(() => {
-    formRef.current?.reset();
-  });
+    if (!isAdding) {
+      formRef.current?.reset();
+    }
+  }, [isAdding]);
 
   return (
     <html lang='en'>
@@ -90,11 +95,7 @@ export default function App() {
 
         <div className='py-8 px-4 mt-12 bg-gray-100'>
           <h4 className='lg:text-3xl text-xl mb-10'>Write a comment</h4>
-          <fetcher.Form
-            method='post'
-            ref={formRef}
-            className='flex flex-col gap-8'
-          >
+          <Form method='post' ref={formRef} className='flex flex-col gap-8'>
             <input
               name='username'
               aria-label='Username'
@@ -109,9 +110,9 @@ export default function App() {
               className='p-1'
             />
             <button className='bg-gray-400 w-24 h-12 rounded' type='submit'>
-              Comment
+              {isAdding ? 'Posting' : 'Post'}
             </button>
-          </fetcher.Form>
+          </Form>
         </div>
         <ScrollRestoration />
         <Scripts />

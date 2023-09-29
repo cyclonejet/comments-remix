@@ -1,5 +1,6 @@
 import type { LinksFunction } from '@remix-run/node';
 import {
+  Form,
   Links,
   LiveReload,
   Meta,
@@ -47,6 +48,28 @@ export default function App() {
           {comments.map((comment) => (
             <Comment key={comment.username} comment={comment} />
           ))}
+        </div>
+
+        <div className='py-8 px-4 mt-12 bg-gray-100'>
+          <h4 className='lg:text-3xl text-xl mb-10'>Write a comment</h4>
+          <Form method='post' className='flex flex-col gap-8'>
+            <input
+              name='username'
+              aria-label='Username'
+              type='text'
+              placeholder='Username'
+              className='leading-loose p-1'
+            />
+            <textarea
+              name='commment'
+              aria-label='Comment'
+              placeholder='Comment'
+              className='p-1'
+            />
+            <button className='bg-gray-400 w-24 h-12 rounded' type='submit'>
+              Comment
+            </button>
+          </Form>
         </div>
         <ScrollRestoration />
         <Scripts />

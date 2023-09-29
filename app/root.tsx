@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import {
   json,
   type ActionFunctionArgs,
@@ -62,7 +63,14 @@ export const loader = async () => {
 
 export default function App() {
   const fetcher = useFetcher();
+
+  const formRef = useRef<HTMLFormElement>(null);
+
   const { comments } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    formRef.current?.reset();
+  });
 
   return (
     <html lang='en'>
@@ -76,13 +84,17 @@ export default function App() {
         <h3 className='lg:text-5xl text-3xl lg:mb-10 mb-4'>Comments</h3>
         <div className='flex flex-col gap-5'>
           {comments.map((comment) => (
-            <Comment key={comment.username} comment={comment} />
+            <Comment key={comment.id} comment={comment} />
           ))}
         </div>
 
         <div className='py-8 px-4 mt-12 bg-gray-100'>
           <h4 className='lg:text-3xl text-xl mb-10'>Write a comment</h4>
-          <fetcher.Form method='post' className='flex flex-col gap-8'>
+          <fetcher.Form
+            method='post'
+            ref={formRef}
+            className='flex flex-col gap-8'
+          >
             <input
               name='username'
               aria-label='Username'

@@ -24,7 +24,7 @@ export default function Comment({ comment }: { comment: Comment }) {
 
       <div>
         <p className='text-2xl'>{comment.username}</p>
-        <span className='text-xs'>{comment.time}</span>
+        <span className='text-xs'>{comment.createdAt}</span>
         <p className='text-base whitespace-pre-line'>{comment.content}</p>
       </div>
     </div>

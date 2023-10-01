@@ -1,10 +1,26 @@
-# Welcome to Remix!
+## Steps to run locally
 
-- [Remix Docs](https://remix.run/docs)
+1. Clone the repository.
 
-## Development
+2. Install the dependencies:
 
-From your terminal:
+```sh
+npm install
+```
+
+3. Create a .env file with following:
+
+```
+DATABASE_URL="file:./dev.db"
+```
+
+4. Run database migrations:
+
+```sh
+npx prisma migrate dev
+```
+
+5. Run the application:
 
 ```sh
 npm run dev
@@ -26,13 +42,15 @@ Then run the app in production mode:
 npm start
 ```
 
-Now you'll need to pick a host to deploy it to.
+## With docker
 
-### DIY
+1. Build the image:
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+```sh
+docker build -f ./Dockerfile . -t comments
+```
 
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+2. Run the image:
+```sh
+docker run -p 3000:3000 comments
+```

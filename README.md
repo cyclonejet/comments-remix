@@ -1,7 +1,14 @@
+# Stack
+
+Framework: Remix  
+Database: SQLite  
+ORM: Prisma  
+CSS: Tailwind  
+
 # Three ways to run this application:
 
 1. [Local development environment](#local-development-environment)
-2. [Local production environment](#local-production-environment)
+2. [Deployment/Production Build](#deploymentproduction-build)
 3. [Docker image](#docker-image)
 
 
@@ -35,7 +42,7 @@ npm run dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
-## Local production environment
+## Deployment/Production Build
 
 First, build your app for production:
 
@@ -48,6 +55,11 @@ Then run the app in production mode:
 ```sh
 npm start
 ```
+
+Make sure to deploy the output of `remix build`
+
+- `build/`
+- `public/build/`
 
 ## Docker image
 

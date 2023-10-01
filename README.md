@@ -1,4 +1,11 @@
-## Steps to run locally
+# Three ways to run this application:
+
+1. [Local development environment](#local-development-environment)
+2. [Local production environment](#local-production-environment)
+3. [Docker image](#docker-image)
+
+
+## Local development environment
 
 1. Clone the repository.
 
@@ -28,7 +35,7 @@ npm run dev
 
 This starts your app in development mode, rebuilding assets on file changes.
 
-## Deployment
+## Local production environment
 
 First, build your app for production:
 
@@ -42,7 +49,7 @@ Then run the app in production mode:
 npm start
 ```
 
-## With docker
+## Docker image
 
 1. Build the image:
 

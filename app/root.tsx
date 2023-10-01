@@ -88,9 +88,11 @@ export default function App() {
       <body className='p-10 font-serif'>
         <h3 className='lg:text-5xl text-3xl lg:mb-10 mb-4'>Comments</h3>
         <div className='flex flex-col gap-5'>
-          {comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
-          ))}
+          {comments.length === 0
+            ? 'No comments.'
+            : comments.map((comment) => (
+                <Comment key={comment.id} comment={comment} />
+              ))}
         </div>
 
         <div className='py-8 px-4 mt-12 bg-gray-100'>
@@ -110,7 +112,7 @@ export default function App() {
               className='p-1'
             />
             <button className='bg-gray-400 w-24 h-12 rounded' type='submit'>
-              {isAdding ? 'Posting' : 'Post'}
+              {navigation.state === 'submitting' ? 'Posting' : 'Post'}
             </button>
           </Form>
         </div>
